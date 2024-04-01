@@ -42,7 +42,7 @@
         }
         // 
         // 
-        //  **Tính năng thêm người mới***
+        //  **Tính năng thêm người mới:
         function addmember(){
         let str = '<input id="them"><button onclick="add()">Add</button> '
             document.getElementById("member").innerHTML = str;
@@ -56,23 +56,25 @@
         // 
         // 
         // ***Tính năng xóa tên đã chọn??????????????
-        function del(){
-            
+        function del(mh){
+                
         }
                 
         // 
         // 
-        //****Tìm kiếm theo tên:
+        //****Tìm kiếm theo tên (chuyển ký tự in hoa-> in thường : toLowerCase; tìm kiếm gần đúng includes)
         function timkiem(){
             let str = '<input id="tim"><button onclick="tim()">Search</button> '
-                document.getElementById("member").innerHTML = str;
+            document.getElementById("member").innerHTML = str;
         }
             function tim(){
+
                 for(let i=0; i<listmember.length; i++){
-                    if(document.getElementById("tim").value!=listmember[i]){
+                    let xyz = document.getElementById("tim").value;
+                    if(listmember[i].toLowerCase().includes(xyz)!==false){
                     document.getElementById("member").innerHTML="Not Found"+"<br>"+"Xin moi nhap lai";
                     }
-                    if(document.getElementById("tim").value==listmember[i]){
+                    if(listmember[i].toLowerCase().includes(xyz)==true){
                     document.getElementById("member").innerHTML=("KQ: " + listmember[i]);
                     }
                     }
@@ -80,10 +82,7 @@
         
     </script>
     <br>
-    <br>
     <p>1/ DELETE: Chưa làm đc tính năng Delete</p>
-    <p>2.1/SEARCH:  Không tìm kiếm được khi chỉ nhập 1-2 ký tự, tìm kiếm theo chữ thường/chữ hoa??</p>
-    <p>2.2/SEARCH: Thêm người mới vào danh sách xong - nhấp tìm kiếm thì không áp dụng được cho tên người mới này</p>
     <p>3/ Áp dụng OOP Như thế nào???</p>
 
 </body>
