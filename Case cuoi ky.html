@@ -55,14 +55,7 @@
             }
         // 
         // 
-        // ***Tính năng xóa tên đã chọn??????????????
-        function del(mh){
-                
-        }
-                
-        // 
-        // 
-        //****Tìm kiếm theo tên (chuyển ký tự in hoa-> in thường : toLowerCase; tìm kiếm gần đúng includes)
+        //***Tìm kiếm theo tên (chuyển ký tự in hoa-> in thường : toLowerCase; tìm kiếm gần đúng includes)
         function timkiem(){
             let str = '<input id="tim"><button onclick="tim()">Search</button> '
             document.getElementById("member").innerHTML = str;
@@ -79,11 +72,19 @@
                     }
                     }
                 }
-        
+        // 
+        // 
+        // ***Tính năng xóa tên đã chọn??????????????
+        function del(mh){
+            let str =  `<h3>${listmember[mh]}<button onclick="del(${mh})"; style="border-color: rgb(209, 88, 233)">Delete</button><h3>`;
+            listmember.splice(str,1);
+            list();
+        }       
     </script>
     <br>
-    <p>1/ DELETE: Chưa làm đc tính năng Delete</p>
-    <p>3/ Áp dụng OOP Như thế nào???</p>
+    <p>1/ DELETE: Chỉ xóa đc theo thứ tự từ trên xuống dưới ???</p>
+    <p>3/ Áp dụng OOP - ongoing???</p>
+    <p>4/ table-> tên-nút delete</p>
 
 </body>
 </html>
