@@ -24,7 +24,24 @@
     <button onclick="timkiem()"; style="border-color: rgb(0, 225, 255);width: 120px">Tim kiem</button>
     <div id="member"></div>
     <script>
-        let listmember =["Pikachu", "Hitokage", "Fushigidane", "Zenigame"];
+        let listmember =[
+            {
+            name: "Pikachu",
+            position: "PL", 
+            },
+            {
+            name: "Hitokage",
+            position: "Staff", 
+            },
+            {
+            name: "Fushigidane",
+            position: "Assistant", 
+            },
+            {
+            name:"Zenigame" ,
+            position: "Staff", 
+            } 
+            ];
         list();
         // 
         // 
@@ -35,7 +52,10 @@
                 str += `<br><br><p>Tong so thanh vien: ${listmember.length}</p>`
             }
             for(let i=0; i<listmember.length; i++){
-                str +=  `<h3>${listmember[i]}<button onclick="del(${i})"; style="border-color: rgb(209, 88, 233)">Delete</button><h3>`;
+                str +=  `<h3>${listmember[i].name+""+"-"+listmember[i].position}
+                    <button onclick="editname(${i})"; style="border-color: rgb(209, 88, 233)">Edit Name</button>
+                    <button onclick="editposition(${i})"; style="border-color: rgb(209, 88, 233)">Edit Position</button>
+                    <button onclick="del(${i})"; style="border-color: rgb(209, 88, 233)">Delete</button><h3>`;
             }
             
             document.getElementById("member").innerHTML=str
@@ -48,8 +68,10 @@
             document.getElementById("member").innerHTML = str;
        }
         function add(){
-            if(document.getElementById("them").value != ""){
-                listmember.push(document.getElementById("them").value)
+            let def = document.getElementById("them").value;
+            if(def != ""){
+                // Tạm thời mặc định thêm mới sẽ có chức vụ là Staff (Có tgian sẽ làm tiếp :v )
+                listmember.push({name: def, position:"Staff"})
             }
                 list();
             }
@@ -64,27 +86,49 @@
 
                 for(let i=0; i<listmember.length; i++){
                     let xyz = document.getElementById("tim").value;
-                    if(listmember[i].toLowerCase().includes(xyz)!==false){
+                    let abc = listmember[i].name;
+
+                    if(abc.toLowerCase().includes(xyz)!==false){
                     document.getElementById("member").innerHTML="Not Found"+"<br>"+"Xin moi nhap lai";
                     }
-                    if(listmember[i].toLowerCase().includes(xyz)==true){
-                    document.getElementById("member").innerHTML=("KQ: " + listmember[i]);
+                    if(abc.toLowerCase().includes(xyz)==true){
+                    document.getElementById("member").innerHTML=("KQ: " + abc +"-"+ listmember[i].position);
                     }
                     }
                 }
         // 
         // 
-        // ***Tính năng xóa tên đã chọn??????????????
+        // ***Tính năng xóa tên đã chọn:
         function del(mh){
-            let str =  `<h3>${listmember[mh]}<button onclick="del(${mh})"; style="border-color: rgb(209, 88, 233)">Delete</button><h3>`;
-            listmember.splice(str,1);
+            listmember.splice(mh,1);
             list();
-        }       
+        }
+        // 
+        //    
+        // ****Tính năng Edit :
+        function editname(hm){
+            let str=`<h3><input  id="Suaten"; value ="${listmember[hm].name}"><button onclick="suaten(${hm})">Sua ten</button></h3>`;
+            document.getElementById("member").innerHTML= str;
+        }
+            function suaten(hm){
+                listmember[hm].name =document.getElementById("Suaten").value
+                list();
+            }
+        function editposition(hm){
+            let str=`<h3><input  id="Suachucvu"; value ="${listmember[hm].position}"><button onclick="suachucvu(${hm})">Sua chuc vu</button></h3>`;
+            document.getElementById("member").innerHTML= str;
+        }
+            function suachucvu(hm){
+                listmember[hm].position =document.getElementById("Suachucvu").value
+                list();
+            }
     </script>
+    
     <br>
-    <p>1/ DELETE: Chỉ xóa đc theo thứ tự từ trên xuống dưới ???</p>
-    <p>3/ Áp dụng OOP - ongoing???</p>
-    <p>4/ table-> tên-nút delete</p>
+    <p>Hoàn thiện thêm các tính năng :</p>
+    <p>4/ table-> tên-nút delete-to be continue...</p>
+    <p>5/ Tính năng add Position-to be continue...</p>
+    
 
 </body>
 </html>
